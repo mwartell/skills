@@ -10,8 +10,6 @@ Manage a Collaborative Development Document (CDD). Detect mode from the argument
 - **Text** (e.g., `/cdd implementing auth system`) → **Create mode**: scaffold a new CDD file
 - **No argument** → ask: "Provide a title to create a new CDD, or a number to satisfy a prompt."
 
----
-
 ## CREATE MODE
 
 1. Ensure `cdd/` exists at the workspace root: `mkdir -p cdd`
@@ -53,24 +51,3 @@ Manage a Collaborative Development Document (CDD). Detect mode from the argument
 - Use markdown links `[label](path)` for file references.
 - Use code blocks for commands and code snippets.
 - Keep prompt/response numbering sequential.
-
-### Editing Technique
-
-Anchor `replace_string_in_file` on the Prompt section, which is unique by construction:
-
-```
-oldString:
-# Prompt N: title
-
-[user-written prompt text]
-
-newString:
-# Prompt N: title
-
-[user-written prompt text]
-
-# Response N: brief summary
-
-[response content]
-
-```
