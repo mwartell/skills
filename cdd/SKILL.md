@@ -24,8 +24,8 @@ Detect mode from the argument:
    title: <title from argument>
    current_head: <hash>
    agent: "<your model name>"
-   session_type:
-   topics: []
+   session_type: exploration  # exploration | feature | bugfix | refactor | maintenance
+   topics: [<keywords extracted from the title>]
    ---
    ```
 
@@ -34,18 +34,19 @@ Detect mode from the argument:
    ```
 
    Leave the Prompt 1 body blank — the user writes the first prompt.
+   Populate `topics:` with 2–4 keywords inferred from the title. Populate `session_type:` with the most appropriate value from the comment.
 
 4. Report the filename created.
 
 ---
 
-## SATISFY MODE (version 26.04.04)
+## SATISFY MODE (version 26.04.06)
 
 1. **Execute** the requested task thoroughly.
-2. **Insert** `# Response N: brief summary` immediately after the `# Prompt N:` section — no content before it.
+2. **Insert** `# Response N: brief summary` at the end of the `# Prompt N:` section — after the prompt's full body text, before your work begins.
 3. **Summarize** in 2–3 sentences: what was accomplished, files changed, next steps.
 4. **Follow** the summary with detailed work (code, analysis, commands).
 
 ### Structure
 
-Place the Response header immediately after the Prompt header — any content before it breaks the document's sequential structure and makes the log hard to scan. Use markdown links `[label](path)` for file references and code blocks for commands and code. Keep prompt/response numbers sequential. Update the topics list in the front-matter if relevant topics emerged during the work.
+The `# Prompt N:` section includes both the header line **and** all the body text the user wrote beneath it. The `# Response N:` header goes at the **end** of that section — after the entire prompt body — not between the prompt title line and the body text. Any work output appearing before the Response header makes the log hard to read. Use markdown links `[label](path)` for file references and code blocks for commands and code. Keep prompt/response numbers sequential. Update the topics list in the front-matter if relevant topics emerged during the work.

@@ -1,0 +1,61 @@
+{
+    "skill_name": "cdd",
+    "evals": [
+        {
+            "id": 1,
+            "prompt": "Use the cdd skill to start a new tracked development session for integrating Stripe payments into the checkout flow.",
+            "expected_output": "A new CDD file created in cddocs/ with a kebab-case filename based on today's date and the title, proper YAML frontmatter (date, title, current_head with a real git hash, agent), and a blank '# Prompt 1:' section at the end.",
+            "files": [],
+            "expectations": [
+                "A markdown file was created in the cddocs/ directory",
+                "The filename matches the pattern YYYY-MM-DD-*stripe*payment*.md or similar kebab-case of the title",
+                "The file contains YAML frontmatter with date, title, current_head, and agent fields",
+                "The current_head field contains a non-empty git hash string",
+                "The file ends with a '# Prompt 1:' header with no body content after it",
+                "The topics list in the YAML frontmatter is non-empty (populated from the title)",
+                "The session_type field has a non-empty value"
+            ]
+        },
+        {
+            "id": 2,
+            "prompt": "Use the cdd skill to satisfy prompt 1 in the attached CDD file.",
+            "expected_output": "The CDD file is updated with '# Response 1: <brief summary>' inserted immediately after '# Prompt 1:', followed by a 2-3 sentence summary and then detailed work. The task (creating greet.py) was actually performed.",
+            "files": [
+                "evals/files/eval2-sample-cdd.md"
+            ],
+            "expectations": [
+                "The CDD file contains a '# Response 1:' header with a non-empty description after the colon",
+                "The '# Response 1:' header appears immediately after '# Prompt 1:' with no agent-generated work content between them",
+                "The response body contains at least two sentences of summary",
+                "A greet.py file was created containing code that outputs 'Hello, CDD!'"
+            ]
+        },
+        {
+            "id": 3,
+            "prompt": "Use the cdd skill to satisfy prompt 2 in the attached CDD file.",
+            "expected_output": "The CDD file is updated with '# Response 2:' immediately after '# Prompt 2:', summary in 2-3 sentences, constants.py modified to add VERSION, and the topics list in frontmatter updated to reflect the work.",
+            "files": [
+                "evals/files/eval3-sample-cdd.md"
+            ],
+            "expectations": [
+                "The CDD file contains a '# Response 2:' header with a description after the colon",
+                "The '# Response 2:' header appears immediately after '# Prompt 2:' with no agent-generated work content between them",
+                "The constants.py file was created or modified to include VERSION = \"1.0.0\"",
+                "The topics list in the YAML frontmatter is non-empty and has more topics than the original [python]"
+            ]
+        },
+        {
+            "id": 4,
+            "prompt": "Use the cdd skill to satisfy prompt 1 in the attached CDD file.",
+            "expected_output": "The CDD file is updated with '# Response 1:' appearing AFTER the full multi-paragraph prompt body — not inserted between the '# Prompt 1:' title line and the body text.",
+            "files": [
+                "evals/files/eval4-sample-cdd.md"
+            ],
+            "expectations": [
+                "The CDD file contains a '# Response 1:' header with a non-empty description after the colon",
+                "The prompt body text ('stored insecurely') appears in the document before the '# Response 1:' header — the Response was not inserted between the prompt title and the prompt body",
+                "The response body contains at least two sentences of summary"
+            ]
+        }
+    ]
+}
