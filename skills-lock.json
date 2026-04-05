@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "skills": {
+    "cdd": {
+      "source": "mwartell/skills",
+      "sourceType": "github",
+      "computedHash": "9784e8f524326130303c9f4bb56e3d54155da627c42da6c948efd521b8a7fb45"
+    },
+    "skill-creator": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "computedHash": "b122f4d1e91aa1d83027e050b5b37c3156203ee85458d7b1360bc48167c9e02a"
+    }
+  }
+}
