@@ -1,6 +1,7 @@
 ---
 name: cdd
 description: 'Create or satisfy a Collaborative Development Document (CDD) — a structured session log that records user prompts and agent responses with git context. ALWAYS use this skill when the user invokes /cdd, wants to start or continue a tracked working session, or asks to satisfy a numbered prompt in a CDD file. Usage: /cdd <title> to create a new CDD; /cdd <N> to satisfy Prompt N in the attached CDD.'
+user-invocable: true
 ---
 
 Manage a Collaborative Development Document (CDD). A CDD is a dated markdown file that logs a working session as numbered prompts and responses — creating a versioned, human-readable record of collaborative development work.
@@ -38,7 +39,7 @@ Detect mode from the argument:
 
 ---
 
-## SATISFY MODE (version 26.03.17)
+## SATISFY MODE (version 26.04.04)
 
 1. **Execute** the requested task thoroughly.
 2. **Insert** `# Response N: brief summary` immediately after the `# Prompt N:` section — no content before it.
