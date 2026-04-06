@@ -56,6 +56,19 @@
                 "The prompt body text ('stored insecurely') appears in the document before the '# Response 1:' header — the Response was not inserted between the prompt title and the prompt body",
                 "The response body contains at least two sentences of summary"
             ]
+        },
+        {
+            "id": 5,
+            "prompt": "Use the cdd skill to satisfy prompt 1 in the attached CDD file.",
+            "expected_output": "The agent's first output (before any tool calls or file reads) is a message containing 'Satisfying' and the prompt subtitle 'add request logging middleware', so the Copilot session is named after the prompt rather than after the first file read.",
+            "files": [
+                "evals/files/eval5-sample-cdd.md"
+            ],
+            "expectations": [
+                "The agent's first output contains 'Satisfying' and the prompt subtitle from the '# Prompt 1:' heading",
+                "The announce message appears before any tool call results or file content in the transcript",
+                "The CDD file contains a '# Response 1:' header with a non-empty description after the colon"
+            ]
         }
     ]
 }
